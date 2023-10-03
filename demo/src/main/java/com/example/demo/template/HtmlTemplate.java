@@ -48,7 +48,7 @@ public class HtmlTemplate {
                           </head>
 
                           <body>
-                          <h1>Login to Spring Boot App</h1>
+                          <h1>Spring Boot App</h1>
                           <br>
                             %s
                             <!-- MDB -->

@@ -7,6 +7,9 @@ import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.template.HtmlTemplate;
+import com.example.demo.template.Login;
+
 @SpringBootApplication
 @RestController
 public class DemoApplication {
@@ -15,15 +18,12 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@GetMapping("/hello")
-	public String hello(){
-		String taai = "<img src='./taai.jpg' alt=\"Girl in a jacket\" width=\"500\" height=\"600\">";
-		return "<h1 style='display:flex,'>Hello World Baggi</h1> <br> "+ taai;
-	}
-	@GetMapping("/image")
-	public Resource getImage() {
-		String pathj = "C:\\Users\\Rahul\\Downloads\\demo\\demo\\src\\main\\java\\com\\example\\demo\\taai.jpg";
-		return new ClassPathResource(pathj);
+	@GetMapping("/")
+	public String hello() {
+		Login login = new Login();
+		String component = login.getRenderHtml();
+		String render = new HtmlTemplate(component).getTemplate();
+		return render;
 	}
 
 }
